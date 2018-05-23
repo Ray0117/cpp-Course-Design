@@ -4,24 +4,24 @@
 #include <stdlib.h>
 using namespace std;
 
-//------------------ÒÔÏÂÊÇÀà¶¨Òå£ºBook -----------------------------------------
+//------------------ä»¥ä¸‹æ˜¯ç±»å®šä¹‰ï¼šBook -----------------------------------------
 
 class bookList;
 
-class Book				//ÊéÀà
+class Book				//ä¹¦ç±»
 {
-	char bookNo[15];	    //ÊéºÅ
-	char bookName[10];	//ÊéÃû
-	int  Num;			//ÊıÁ¿
+	char bookNo[15];	    //ä¹¦å·
+	char bookName[10];	//ä¹¦å
+	int  Num;			//æ•°é‡
 public:
-	Book(char *bNo=NULL, char *bNa=NULL, int n=0);	//¹¹Ôìº¯Êı£¬¸÷²ÎÊı¾ùÓĞÈ±Ê¡Öµ
-	void Show();									//ÏÔÊ¾Ò»±¾Í¼ÊéĞÅÏ¢
-	void print(ofstream &out);				    //½«Ò»±¾Í¼ÊéĞÅÏ¢Ğ´ÈëÊı¾İÎÄ¼ş
-	void setInfo(char *nop, char *nap, int n);		//ÉèÖÃÒ»±¾Í¼ÊéĞÅÏ¢
-	void setNum(int n);							//ÉèÖÃÊé¿âÏÖÓĞÍ¼ÊéÖÖÀàÊı
-	int  getNum();								//»ñÈ¡Êé¿âÏÖÓĞÍ¼ÊéÖÖÀàÊı
-	friend class bookList;						//½«bookListÀàËµÃ÷ÎªÓÑÔªÀà¡£
-    //¡­¡­										//¸ù¾İĞèÒªÌí¼Ó¹«ÓĞº¯Êı½Ó¿Ú¡­¡­ 
+	Book(char *bNo=NULL, char *bNa=NULL, int n=0);	//æ„é€ å‡½æ•°ï¼Œå„å‚æ•°å‡æœ‰ç¼ºçœå€¼
+	void Show();									//æ˜¾ç¤ºä¸€æœ¬å›¾ä¹¦ä¿¡æ¯
+	void print(ofstream &out);				    //å°†ä¸€æœ¬å›¾ä¹¦ä¿¡æ¯å†™å…¥æ•°æ®æ–‡ä»¶
+	void setInfo(char *nop, char *nap, int n);		//è®¾ç½®ä¸€æœ¬å›¾ä¹¦ä¿¡æ¯
+	void setNum(int n);							//è®¾ç½®ä¹¦åº“ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
+	int  getNum();								//è·å–ä¹¦åº“ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
+	friend class bookList;						//å°†bookListç±»è¯´æ˜ä¸ºå‹å…ƒç±»ã€‚
+    //â€¦â€¦										//æ ¹æ®éœ€è¦æ·»åŠ å…¬æœ‰å‡½æ•°æ¥å£â€¦â€¦ 
 };
 
 Book::Book(char *bNo, char *bNa, int n)
@@ -55,42 +55,41 @@ void Book::setInfo(char *nop, char *nap, int n)
 	Num=n;
 }
 
-void Book::setNum(int n)	//ÉèÖÃÊé¿âÏÖÓĞÍ¼ÊéÖÖÀàÊı
+void Book::setNum(int n)	//è®¾ç½®ä¹¦åº“ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
 {
 	Num=n;
 }
 
-int Book::getNum()		//»ñÈ¡Êé¿âÏÖÓĞÍ¼ÊéÖÖÀàÊı
+int Book::getNum()		//è·å–ä¹¦åº“ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
 {
 	return Num;
 }
 
-//-----------ÒÔÏÂÊÇÀà¶¨Òå£ºbookList-----------------------------------------------------
+//-----------ä»¥ä¸‹æ˜¯ç±»å®šä¹‰ï¼šbookList-----------------------------------------------------
 
-class bookList				//Êé¿âÀà
+class bookList				//ä¹¦åº“ç±»
 {
-	Book *Books;					//Í¼ÊéÏßĞÔ±íÊ×Ö¸Õë
-	int curLen;						//ÏÖÓĞÍ¼ÊéÖÖÀàÊı
-	int maxLen;						//Í¼Êé×î´óÖÖÀàÊı
+	Book *Books;					//å›¾ä¹¦çº¿æ€§è¡¨é¦–æŒ‡é’ˆ
+	int curLen;						//ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
+	int maxLen;						//å›¾ä¹¦æœ€å¤§ç§ç±»æ•°
 public:
-	bookList(int Len=20);			//¹¹Ôìº¯Êı£¬³õÊ¼»¯Êé¿â
-	~ bookList ( ); 				//Îö¹¹º¯Êı£¬ÊÍ·ÅÊé¿â¿Õ¼ä
+	bookList(int Len=20);			//æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ä¹¦åº“
+	~ bookList ( ); 				//ææ„å‡½æ•°ï¼Œé‡Šæ”¾ä¹¦åº“ç©ºé—´
 	
-	void appendBook(char *nop,char *nap, int n);	//×·¼ÓÒ»ÖÖÍ¼Êé
-	int isIn(char *bkNo);			//°´ÊéºÅ²éÕÒÍ¼Êé£¬Èô´æÔÚ£¬·µ»ØÆäÏÂ±ê£»·ñÔò·µ»Ø-1
-	Book & getBooks(int i);			//·µ»ØÏÂ±êÎªiµÄÍ¼Êé¶ÔÏóµÄÒıÓÃ
-	void deleteBook(char * bkNo);	//É¾³ıÖ¸¶¨ÊéºÅµÄÍ¼Êé
-	void sortBooks();				//°´ÊéºÅ¹Ø¼ü×ÖÅÅ³ÉÉıĞò
-	void showAll( );				//ÏÔÊ¾È«²¿Í¼Êé
-	int  curBookLen( );				//·µ»ØÏÖÓĞÍ¼ÊéÖÖÀàÊı	
-	void setCurBookLen(int len);	//ÉèÖÃÏÖÓĞÍ¼ÊéÖÖÀàÊı
-	void initBookList();			//´ÓÎÄ¼şbookdata.txtÖĞ¶ÁÈëÈ«²¿ĞÅÏ¢´æÈëÊé¿âBooks½á¹¹
-	void readFromFile(char *filename);//´Ó²ÎÊıÖ¸¶¨ÎÄ¼şÖĞ¶ÁÈëËùÓĞµÄÍ¼Êé
-	void writeToFile(char *filename);//½«Êé¿âÖĞËùÓĞÖÖÀàµÄÍ¼ÊéĞ´Èë²ÎÊıÖ¸¶¨ÎÄ¼şÖĞ
-	void reverseBookList();			 //Í¼Êé¿â´æ¼ÇÂ¼ÄæĞò
+	void appendBook(char *nop,char *nap, int n);	//è¿½åŠ ä¸€ç§å›¾ä¹¦
+	int isIn(char *bkNo);			//æŒ‰ä¹¦å·æŸ¥æ‰¾å›¾ä¹¦ï¼Œè‹¥å­˜åœ¨ï¼Œè¿”å›å…¶ä¸‹æ ‡ï¼›å¦åˆ™è¿”å›-1
+	Book & getBooks(int i);			//è¿”å›ä¸‹æ ‡ä¸ºiçš„å›¾ä¹¦å¯¹è±¡çš„å¼•ç”¨
+	void deleteBook(char * bkNo);	//åˆ é™¤æŒ‡å®šä¹¦å·çš„å›¾ä¹¦
+	void sortBooks();				//æŒ‰ä¹¦å·å…³é”®å­—æ’æˆå‡åº
+	void showAll( );				//æ˜¾ç¤ºå…¨éƒ¨å›¾ä¹¦
+	int  curBookLen( );				//è¿”å›ç°æœ‰å›¾ä¹¦ç§ç±»æ•°	
+	void setCurBookLen(int len);	//è®¾ç½®ç°æœ‰å›¾ä¹¦ç§ç±»æ•°
+	void initBookList();			//ä»æ–‡ä»¶bookdata.txtä¸­è¯»å…¥å…¨éƒ¨ä¿¡æ¯å­˜å…¥ä¹¦åº“Booksç»“æ„
+	void readFromFile(char *filename);//ä»å‚æ•°æŒ‡å®šæ–‡ä»¶ä¸­è¯»å…¥æ‰€æœ‰çš„å›¾ä¹¦
+	void writeToFile(char *filename);//å°†ä¹¦åº“ä¸­æ‰€æœ‰ç§ç±»çš„å›¾ä¹¦å†™å…¥å‚æ•°æŒ‡å®šæ–‡ä»¶ä¸­
 };
 
-bookList::bookList(int Len)  //¹¹Ôìº¯Êı£¬³õÊ¼»¯Êé¿â
+bookList::bookList(int Len)  //æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ä¹¦åº“
 {
 	maxLen = Len;
 	curLen = 0;
@@ -104,13 +103,13 @@ bookList::bookList(int Len)  //¹¹Ôìº¯Êı£¬³õÊ¼»¯Êé¿â
 		Books = NULL;
 }
 
-bookList::~ bookList ( ) 		//Îö¹¹º¯Êı£¬ÊÍ·ÅÊé¿â¿Õ¼ä		
+bookList::~ bookList ( ) 		//ææ„å‡½æ•°ï¼Œé‡Šæ”¾ä¹¦åº“ç©ºé—´		
 {
 	if(Books) delete []Books;
 }
 
 
-void bookList::appendBook(char *nop,char *nap, int n)	//½«×·¼ÓÒ»±¾Í¼Êé//completed
+void bookList::appendBook(char *nop,char *nap, int n)	//å°†è¿½åŠ ä¸€æœ¬å›¾ä¹¦//completed
 {
 	if (curLen == maxLen)
 	{
@@ -133,7 +132,7 @@ void bookList::appendBook(char *nop,char *nap, int n)	//½«×·¼ÓÒ»±¾Í¼Êé//complete
 }
 
 
-int bookList::isIn(char *bkNo)  //°´ÊéºÅ²éÕÒÍ¼Êé£¬Èô´æÔÚ£¬·µ»ØÆäÏÂ±ê£»·ñÔò·µ»Ø-1//completed
+int bookList::isIn(char *bkNo)  //æŒ‰ä¹¦å·æŸ¥æ‰¾å›¾ä¹¦ï¼Œè‹¥å­˜åœ¨ï¼Œè¿”å›å…¶ä¸‹æ ‡ï¼›å¦åˆ™è¿”å›-1//completed
 {
 	for (int i = 0; i < curLen; i++)
 		if (!strcmp(bkNo, Books[i].bookNo))
@@ -143,12 +142,12 @@ int bookList::isIn(char *bkNo)  //°´ÊéºÅ²éÕÒÍ¼Êé£¬Èô´æÔÚ£¬·µ»ØÆäÏÂ±ê£»·ñÔò·µ»Ø-1
 }
 
 
-Book & bookList::getBooks(int i)	//·µ»ØÏÂ±êÎªiµÄÍ¼Êé¶ÔÏóµÄÒıÓÃ//completed		
+Book & bookList::getBooks(int i)	//è¿”å›ä¸‹æ ‡ä¸ºiçš„å›¾ä¹¦å¯¹è±¡çš„å¼•ç”¨//completed		
 {
 	return Books[i];
 }
 
-void bookList::deleteBook(char * bkNo) //É¾³ıÖ¸¶¨ÊéºÅµÄÍ¼Êé//completed
+void bookList::deleteBook(char * bkNo) //åˆ é™¤æŒ‡å®šä¹¦å·çš„å›¾ä¹¦//completed
 {
 	for (int i = 0; i < curLen; i++)
 		Books[i] = Books[i + 1];
@@ -156,7 +155,7 @@ void bookList::deleteBook(char * bkNo) //É¾³ıÖ¸¶¨ÊéºÅµÄÍ¼Êé//completed
 	setCurBookLen(curLen - 1);
 }
 
-void bookList::sortBooks()		//°´ÊéºÅ¹Ø¼ü×ÖÅÅ³ÉÉıĞò		//completed//completed
+void bookList::sortBooks()		//æŒ‰ä¹¦å·å…³é”®å­—æ’æˆå‡åº		//completed//completed
 {
 	Book t;
 	int p, j;
@@ -176,7 +175,7 @@ void bookList::sortBooks()		//°´ÊéºÅ¹Ø¼ü×ÖÅÅ³ÉÉıĞò		//completed//completed
 	}
 }
 
-void bookList::showAll()	 //ÏÔÊ¾È«²¿Í¼Êé			//completed
+void bookList::showAll()	 //æ˜¾ç¤ºå…¨éƒ¨å›¾ä¹¦			//completed
 {
 	cout << curLen << endl;
 
@@ -184,18 +183,18 @@ void bookList::showAll()	 //ÏÔÊ¾È«²¿Í¼Êé			//completed
 		Books[i].Show();
 }
 
-int bookList::curBookLen( )	//·µ»ØÏÖÓĞÍ¼ÊéÖÖÀàÊı		//completed	
+int bookList::curBookLen( )	//è¿”å›ç°æœ‰å›¾ä¹¦ç§ç±»æ•°		//completed	
 {
 	return curLen;
 }
 
-void bookList::setCurBookLen(int len) //ÉèÖÃÏÖÓĞÍ¼ÊéÖÖÀàÊı//completed
+void bookList::setCurBookLen(int len) //è®¾ç½®ç°æœ‰å›¾ä¹¦ç§ç±»æ•°//completed
 {
 	curLen = len;
 }
 
 
-void bookList::initBookList()	//´ÓÎÄ¼şbookdata.txtÖĞ¶ÁÈëÈ«²¿ĞÅÏ¢´æÈëÊé¿âBooks½á¹¹//completed
+void bookList::initBookList()	//ä»æ–‡ä»¶bookdata.txtä¸­è¯»å…¥å…¨éƒ¨ä¿¡æ¯å­˜å…¥ä¹¦åº“Booksç»“æ„//completed
 {
 	char data[40] = "g:\\bookdata.txt";
 	ifstream infile;
@@ -207,7 +206,7 @@ void bookList::initBookList()	//´ÓÎÄ¼şbookdata.txtÖĞ¶ÁÈëÈ«²¿ĞÅÏ¢´æÈëÊé¿âBooks½á¹
 	}
 }
 
-void bookList::readFromFile(char *filename)		//´Ó²ÎÊıÖ¸¶¨ÎÄ¼şÖĞ¶ÁÈëËùÓĞµÄÍ¼Êé	//completed
+void bookList::readFromFile(char *filename)		//ä»å‚æ•°æŒ‡å®šæ–‡ä»¶ä¸­è¯»å…¥æ‰€æœ‰çš„å›¾ä¹¦	//completed
 {
 	int tNum, Num;
 	char no[20], name[20];
@@ -226,7 +225,7 @@ void bookList::readFromFile(char *filename)		//´Ó²ÎÊıÖ¸¶¨ÎÄ¼şÖĞ¶ÁÈëËùÓĞµÄÍ¼Êé	//
 	}
 }
 
-void bookList::writeToFile(char *filename)     //½«Êé¿âÖĞËùÓĞÖÖÀàµÄÍ¼ÊéĞ´Èë²ÎÊıÖ¸¶¨ÎÄ¼şÖĞ//completed
+void bookList::writeToFile(char *filename)     //å°†ä¹¦åº“ä¸­æ‰€æœ‰ç§ç±»çš„å›¾ä¹¦å†™å…¥å‚æ•°æŒ‡å®šæ–‡ä»¶ä¸­//completed
 {
 	ofstream outfile;
 	outfile.open(filename);
@@ -242,18 +241,7 @@ void bookList::writeToFile(char *filename)     //½«Êé¿âÖĞËùÓĞÖÖÀàµÄÍ¼ÊéĞ´Èë²ÎÊıÖ
 	outfile.close();
 }
 
-void bookList::reverseBookList()//need change
-{
-	Book t;
-
-	for (int i = 0; i < curLen/2; i++)
-	{
-		t = Books[i];
-		Books[i] = Books[curLen - i];
-		Books[curLen - i] = t;
-	}
-}
-//-----------ÒÔÏÂÊÇÖ÷º¯ÊıÖĞ£¬Ã¿¸ö²Ëµ¥Ñ¡Ïî´¦Àíº¯ÊıµÄ¶¨Òå-----------------------------------------------------
+//-----------ä»¥ä¸‹æ˜¯ä¸»å‡½æ•°ä¸­ï¼Œæ¯ä¸ªèœå•é€‰é¡¹å¤„ç†å‡½æ•°çš„å®šä¹‰-----------------------------------------------------
 
 void appendRecord(bookList &booksObj)//completed
 {
@@ -270,10 +258,10 @@ void delRecord(bookList &booksObj)//completed
 	char ans, No[15];
 	cin >> No;
 	if (booksObj.isIn(No) == -1)
-		cout << "Êé¿âÖĞÃ»ÓĞ´ËÊé" << endl;
+		cout << "ä¹¦åº“ä¸­æ²¡æœ‰æ­¤ä¹¦" << endl;
 	else
 	{
-		cout << "È·¶¨É¾³ıÂğ£¿y/n ?" << endl;
+		cout << "ç¡®å®šåˆ é™¤å—ï¼Ÿy/n ?" << endl;
 		cin >> ans;
 		if (ans == 'y')
 			booksObj.deleteBook(No);
@@ -283,7 +271,7 @@ void delRecord(bookList &booksObj)//completed
 void showAll(bookList &booksObj)//completed
 {
 	if (booksObj.curBookLen() == 0)
-		cout << "Êé¿âÖĞÃ»ÓĞÍ¼Êé" << endl;
+		cout << "ä¹¦åº“ä¸­æ²¡æœ‰å›¾ä¹¦" << endl;
 	else
 		booksObj.showAll();
 }
@@ -291,12 +279,12 @@ void showAll(bookList &booksObj)//completed
 void query(bookList &booksObj)//completed
 {
 	char No[15];
-	cout << "ÇëÊäÈëÊéºÅ£º" << endl;
+	cout << "è¯·è¾“å…¥ä¹¦å·ï¼š" << endl;
 	cin >> No;
 	if (booksObj.isIn(No) == -1)
-		cout << "Êé¿âÖĞÃ»ÓĞ´Ë±¾Í¼Êé" << endl;
+		cout << "ä¹¦åº“ä¸­æ²¡æœ‰æ­¤æœ¬å›¾ä¹¦" << endl;
 	else
-		cout << "Êé¿âÖĞÓĞÕâ±¾Êé" << endl;
+		cout << "ä¹¦åº“ä¸­æœ‰è¿™æœ¬ä¹¦" << endl;
 		booksObj.getBooks(booksObj.isIn(No)).Show();
 }
 
@@ -305,12 +293,12 @@ void addBooks(bookList &booksObj)//completed
 	char No[15];
 	int  N, i;
 	i = booksObj.isIn(No);
-	cout << "ÇëÊäÈëÊéºÅ£º" << endl;
+	cout << "è¯·è¾“å…¥ä¹¦å·ï¼š" << endl;
 	cin >> No;
 	if (booksObj.isIn(No) == -1)
-		cout << "Êé¿âÖĞÃ»ÓĞ´Ë±¾Í¼Êé" << endl;
+		cout << "ä¹¦åº“ä¸­æ²¡æœ‰æ­¤æœ¬å›¾ä¹¦" << endl;
 	else
-		cout << "ÇëÊäÈëÈë¿âÊıÁ¿" << endl;
+		cout << "è¯·è¾“å…¥å…¥åº“æ•°é‡" << endl;
 		cin >> N;	
 		booksObj.getBooks(i).setNum(booksObj.getBooks(i).getNum() + N);
 }		
@@ -319,15 +307,15 @@ void sellBooks(bookList &booksObj)//completed
 {
 	char No[15];
 	int  N, i;
-	cout << "ÇëÊäÈëÊéºÅ¼°ÏúÊÛÊıÁ¿£º" << endl;
+	cout << "è¯·è¾“å…¥ä¹¦å·åŠé”€å”®æ•°é‡ï¼š" << endl;
 	cin >> No >> N;
 	i = booksObj.isIn(No);
 	if (i == -1)
-		cout << "Êé¿âÖĞÃ»ÓĞ´Ë±¾Í¼Êé" << endl;
+		cout << "ä¹¦åº“ä¸­æ²¡æœ‰æ­¤æœ¬å›¾ä¹¦" << endl;
 	else 
 	{
 		if (N > booksObj.getBooks(i).getNum())
-			cout << "¿â´æ²»×ã£¡" << endl;
+			cout << "åº“å­˜ä¸è¶³ï¼" << endl;
 		else
 			booksObj.getBooks(i).setNum(booksObj.getBooks(i).getNum() - N);
 	}
@@ -337,7 +325,7 @@ void sellBooks(bookList &booksObj)//completed
 void appendFromTxtFile(bookList &booksObj)//completed
 {
 	char filename[40];
-	cout << "ÇëÊäÈëÎÄ¼şÂ·¾¶" << endl;
+	cout << "è¯·è¾“å…¥æ–‡ä»¶è·¯å¾„" << endl;
 	cin >> filename;
 	booksObj.readFromFile(filename);
 }
@@ -359,63 +347,58 @@ void sortByNo(bookList &booksObj)//completed
 void delAll(bookList &booksObj)//completed
 {
 	char ans;
-	cout << "È·¶¨È«²¿É¾³ıÂğ£¿y/n ?" << endl;
+	cout << "ç¡®å®šå…¨éƒ¨åˆ é™¤å—ï¼Ÿy/n ?" << endl;
 	cin >> ans;
 	if (ans == 'y')
 		booksObj.setCurBookLen(0);
-}
-
-void reverseBooks(bookList &booksObj)//completed
-{
-	booksObj.reverseBookList();
 }
 
 char Quit(bookList &booksObj)//completed
 {
 	char ans;
 
-	cout<<"È·¶¨ÍË³ö£¿y/n: "; 
+	cout<<"ç¡®å®šé€€å‡ºï¼Ÿy/n: "; 
 	cin>>ans;
 	if(ans=='y')
 		booksObj.writeToFile("bookdata.txt");
 	return ans;
 }
 
-//-----------ÒÔÏÂÊÇÖ÷º¯ÊıÒÔ¼°²Ëµ¥º¯ÊıµÄ¶¨Òå-----------------------------------------------------
+//-----------ä»¥ä¸‹æ˜¯ä¸»å‡½æ•°ä»¥åŠèœå•å‡½æ•°çš„å®šä¹‰-----------------------------------------------------
 
-int menu_select( ); //º¯ÊıÉùÃ÷
+int menu_select( ); //å‡½æ•°å£°æ˜
 
 void main()  
 { 
 
-	bookList booksObj; //¶¨ÒåÍ¼Êé¼ÇÂ¼¶ÔÏó
+	bookList booksObj; //å®šä¹‰å›¾ä¹¦è®°å½•å¯¹è±¡
 	int sel;
 
-	// booksObj.initBookList();  //´Ëº¯ÊıÒªÍê³ÉµÄÈÎÎñ£¬¿ÉÒÔ×öµ½¹¹Ôìº¯ÊıÖĞ 
+	// booksObj.initBookList();  //æ­¤å‡½æ•°è¦å®Œæˆçš„ä»»åŠ¡ï¼Œå¯ä»¥åšåˆ°æ„é€ å‡½æ•°ä¸­ 
 
 	for( ; ; )
 	{
 		switch(sel=menu_select()) 
 		{
-		   case 1: cout << "ÇëÊäÈëÒ»±¾ÊéµÄĞÅÏ¢£¨ÊéºÅ ÊéÃû ÊıÁ¿£©£º " << endl; 
+		   case 1: cout << "è¯·è¾“å…¥ä¸€æœ¬ä¹¦çš„ä¿¡æ¯ï¼ˆä¹¦å· ä¹¦å æ•°é‡ï¼‰ï¼š " << endl; 
 			       appendRecord(booksObj);
 			       system("pause");break;
-		   case 2: cout << "ÇëÊäÈëÒªÉ¾³ıµÄÊéºÅ : " << endl;
+		   case 2: cout << "è¯·è¾“å…¥è¦åˆ é™¤çš„ä¹¦å· : " << endl;
 			        delRecord(booksObj); 
 			       system("pause");break;
 		   case 3: cout << "" << endl;
 			       showAll(booksObj); 
 			       system("pause");break;
-		   case 4: cout << "ÇëÊäÈëÊéºÅ£º " << endl;
+		   case 4: cout << "è¯·è¾“å…¥ä¹¦å·ï¼š " << endl;
 			       query(booksObj);
 			       system("pause");break;
-		   case 5: cout << "ÇëÊäÈëÊéºÅ¼°Èë¿âÊıÁ¿£º " << endl;
+		   case 5: cout << "è¯·è¾“å…¥ä¹¦å·åŠå…¥åº“æ•°é‡ï¼š " << endl;
 			       addBooks(booksObj); 
 			       system("pause");break;
-		   case 6: cout << "ÇëÊäÈëÊéºÅ¼°ÏúÊÛÊıÁ¿£º " << endl;
+		   case 6: cout << "è¯·è¾“å…¥ä¹¦å·åŠé”€å”®æ•°é‡ï¼š " << endl;
 			       sellBooks(booksObj); 
 		           system("pause");break;
-		   case 7: cout << "ÇëÊäÈëµ¼ÈëÎÄ¼şÂ·¾¶: " << endl;
+		   case 7: cout << "è¯·è¾“å…¥å¯¼å…¥æ–‡ä»¶è·¯å¾„: " << endl;
 			       appendFromTxtFile(booksObj); 
 			       system("pause");break;
 		   case 8: cout << "function 8 " << endl;
@@ -427,9 +410,6 @@ void main()
 		   case 10:cout << " " << endl; 
 			       delAll(booksObj); 
 			       system("pause");break;
-		   case 11:cout << " " << endl;
-				   reverseBooks(booksObj);
-				   system("pause"); break;
 		   case 0: if(Quit(booksObj)!='y')  continue;
 		}
 
@@ -437,36 +417,35 @@ void main()
 	}
 }
 
-int menu_select( ) // ²Ëµ¥ÊµÏÖ
+int menu_select( ) // èœå•å®ç°
 {
 	char *menu[ ]={
-				"   1.	Ôö¼ÓÍ¼Êé¼ÇÂ¼",
-				"   2.	É¾³ıÍ¼Êé¼ÇÂ¼",
-				"   3.	ÏÔÊ¾ËùÓĞÍ¼Êé¼ÇÂ¼",
-				"   4.	²éÑ¯Í¼Êé",
-				"   5.	Í¼ÊéÈë¿â",
-				"   6.	Í¼ÊéÏúÊÛ",
-				"   7.	ÅúÁ¿µ¼ÈëÍ¼Êé¼ÇÂ¼",
-				"   8.	µ¼³öÍ¼Êé¼ÇÂ¼",
-				"   9.	°´ÊéºÅÅÅĞò",
-				"  10.	É¾³ıÈ«²¿Í¼Êé¼ÇÂ¼",
-				"  11.  Í¼Êé¿â´æ¼ÇÂ¼ÄæĞò",
-				"   0.	ÍË³ö",
+				"   1.	å¢åŠ å›¾ä¹¦è®°å½•",
+				"   2.	åˆ é™¤å›¾ä¹¦è®°å½•",
+				"   3.	æ˜¾ç¤ºæ‰€æœ‰å›¾ä¹¦è®°å½•",
+				"   4.	æŸ¥è¯¢å›¾ä¹¦",
+				"   5.	å›¾ä¹¦å…¥åº“",
+				"   6.	å›¾ä¹¦é”€å”®",
+				"   7.	æ‰¹é‡å¯¼å…¥å›¾ä¹¦è®°å½•",
+				"   8.	å¯¼å‡ºå›¾ä¹¦è®°å½•",
+				"   9.	æŒ‰ä¹¦å·æ’åº",
+				"  10.	åˆ é™¤å…¨éƒ¨å›¾ä¹¦è®°å½•",
+				"   0.	é€€å‡º",
 				NULL
 				};
 
 	int choice;
 
 	do {
-		system("cls");          //  ÇåÆÁ   
-		cout<<"\n\n ==============Í¼Êé¼ÇÂ¼¹ÜÀí============== \n\n";
+		system("cls");          //  æ¸…å±   
+		cout<<"\n\n ==============å›¾ä¹¦è®°å½•ç®¡ç†============== \n\n";
 		for(int i=0; menu[i]; i++)
 			cout<<menu[i]<<endl;
 		cout<<"\n ======================================= \n";
 
-		cout<<"ÇëÊäÈëÑ¡Ôñ£º";
+		cout<<"è¯·è¾“å…¥é€‰æ‹©ï¼š";
 		cin>>choice;
-	} while(choice<0 || choice>11);
+	} while(choice<0 || choice>10);
 
 	return(choice);
 }
